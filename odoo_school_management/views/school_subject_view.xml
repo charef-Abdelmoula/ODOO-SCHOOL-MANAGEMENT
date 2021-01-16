@@ -1,0 +1,85 @@
+<odoo>
+    <data>
+        <!--
+        This is going to be the tree view for our object(the list view)
+        you have to specify an id for the view type :it's going to be stored with id
+        In the field name you can write anything
+        In the field model you have write the name of your object
+         -->
+        <record model="ir.ui.view" id="school_subject_tree">
+            <field name="name">school.subject.list</field>
+            <field name="model">school.subject</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!--Form view-->
+        <record model="ir.ui.view" id="school_subject_form">
+            <field name="name">school.subject.form</field>
+            <field name="model">school.subject</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <!--
+                             required="1" : so that this field should be required when
+                             creating a new subject from the interface
+                             you can also add invisible="1" if you want don't want
+                             to show a field
+                             -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search view : you add the fields you want to use ofr searching your records
+        We only add the fields we want to use for search:search place already added by Odoo
+        -->
+        <record model="ir.ui.view" id="school_subject_search">
+            <field name="name">school.subject.search</field>
+            <field name="model">school.subject</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action:Define an action which will be called by the menu you want to see-->
+        <record model="ir.actions.act_window" id="school_subject_action">
+            <field name="name">School Subjects</field>
+            <field name="res_model">school.subject</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <!--add a menu for subjects,will be named Subjects and as you can see subjects in
+            schools are linked to configuration of the school so let's add a menu like this:
+            SCHOOL->Configuration->Subjects:SCHOOL menu is going to be the main menu
+            -->
+
+        <!--ROOT MENU-->
+        <menuitem id="school_root_menu"
+                  name="SCHOOL"
+                  sequence="1"
+        />
+        <!--Configuration menu  :in root menu (parent)-->
+        <menuitem id="school_configuration_menu"
+                  name="Configuration"
+                  sequence="6"
+                  parent="school_root_menu"
+        />
+        <!--Subjects menu MENU :in Configuration menu (parent)
+            action: the action defined above
+        -->
+        <menuitem id="school_subject_menu"
+                  name="Subjects"
+                  sequence="1"
+                  parent="school_configuration_menu"
+                  action="school_subject_action"
+        />
+    </data>
+</odoo>

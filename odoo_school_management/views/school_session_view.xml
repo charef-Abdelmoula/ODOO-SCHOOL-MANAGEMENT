@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <!--List view-->
+        <record model="ir.ui.view" id="school_session_tree">
+            <field name="name">school.session.list</field>
+            <field name="model">school.session</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="duration"/>
+                    <field name="subject_id"/>
+                    <field name="teacher_id"/>
+                    <field name="classroom_id"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <!--Form view-->
+        <record model="ir.ui.view" id="school_session_form">
+            <field name="name">school.session.form</field>
+            <field name="model">school.session</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="duration"/>
+                            </group>
+                            <group>
+                                <field name="subject_id"/>
+                                <field name="teacher_id"/>
+                                <field name="classroom_id"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--Search view-->
+        <record model="ir.ui.view" id="school_session_search">
+            <field name="name">school.session.search</field>
+            <field name="model">school.session</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action-->
+        <record model="ir.actions.act_window" id="school_sessions_action">
+            <field name="name">School Sessions</field>
+            <field name="res_model">school.session</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="school_session_menu"
+                  name="Sessions"
+                  sequence="4"
+                  parent="school_root_menu"
+                  action="school_sessions_action"
+        />
+    </data>
+</odoo>

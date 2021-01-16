@@ -1,0 +1,76 @@
+<odoo>
+    <data>
+        <!--List view-->
+        <record model="ir.ui.view" id="school_student_tree">
+            <field name="name">school.student.list</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="number"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="number"/>
+                    <field name="birth_date"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+        <!--Form view-->
+        <record model="ir.ui.view" id="school_student_form">
+            <field name="name">school.student.form</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title" modifiers="{}">
+                                <!-- this div is only for styling the field -->
+                                <h1 modifiers="{}">
+                                    <field name="name"
+                                           required="1"
+                                           placeholder="Student Name"
+                                           string="Student Name"
+                                           modifiers="{'required':true}"/>
+                                </h1>
+                            </div>
+                        <group>
+                            <group>
+                                <field name="number"/>
+                                <field name="age"/>
+                                <field name="address"/>
+                            </group>
+                            <group>
+                                <field name="gender"/>
+                                <field name="birth_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--Search view-->
+        <record model="ir.ui.view" id="school_students_search">
+            <field name="name">school.student.search</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action-->
+        <record model="ir.actions.act_window" id="school_student_action">
+            <field name="name">School Students</field>
+            <field name="res_model">school.student</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="school_students_menu"
+                  name="Students"
+                  sequence="2"
+                  parent="school_root_menu"
+                  action="school_student_action"
+        />
+    </data>
+</odoo>
