@@ -8,8 +8,8 @@ class SchoolSession(models.Model):
     _description = 'School Session'
 
     name = fields.Char(string="Name")
-    start_date = fields.Date(string="Start Date")
-    end_date = fields.Date(string="End Date")
+    start_date = fields.Datetime(string="Start Date")
+    end_date = fields.Datetime(string="End Date")
     duration = fields.Float(string="Duration")
     subject_id = fields.Many2one('school.subject', string="Subject")
     teacher_id = fields.Many2one('school.teacher', string="Teacher")

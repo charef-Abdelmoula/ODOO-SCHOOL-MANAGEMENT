@@ -1,0 +1,76 @@
+<odoo>
+    <data>
+        <!--List view-->
+        <record model="ir.ui.view" id="school_transfer_request_tree">
+            <field name="name">school.transfer.request</field>
+            <field name="model">school.transfer.request</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="student_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <!--Form view-->
+        <record model="ir.ui.view" id="school_transfer_request_form">
+            <field name="name">school.transfer.request.form</field>
+            <field name="model">school.transfer.request</field>
+            <field name="arch" type="xml">
+                <form>
+                    <!--add this header and place the field state inside it so that it will be
+                     shown at the top of the form view-->
+                    <header>
+                        <button name="submit_request" string="Submit" states="draft" type="object" class="oe_highlight"/>
+                        <button name="validate_request" string="Validate" states="submitted" type="object" class="oe_highlight"/>
+                        <button name="accept_request" string="Accept" states="validated" type="object" class="oe_highlight"/>
+                        <button name="reject_request" string="Reject" states="validated" type="object" class="oe_highlight"/>
+                        <button name="reset_request_to_draft" string="Reset To Draft" states="submitted,validated,accepted,rejected" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title" modifiers="{}">
+                                <h1 modifiers="{}">
+                                    <field name="name"
+                                           placeholder="Transfer Request Number"
+                                           string="Transfer Request Number"
+                                           />
+                                </h1>
+                            </div>
+                        <group>
+                            <group>
+                                <field name="student_id"/>
+                                <field name="reason"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--Search view-->
+        <record model="ir.ui.view" id="school_transfer_request_search">
+            <field name="name">school.transfer.request</field>
+            <field name="model">school.transfer.request</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="student_id"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action-->
+        <record model="ir.actions.act_window" id="school_transfer_request_action">
+            <field name="name">School Transfer Requests</field>
+            <field name="res_model">school.transfer.request</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="school_transfer_request_menu"
+                  name="Transfer Requests"
+                  sequence="10"
+                  parent="school_root_menu"
+                  action="school_transfer_request_action"
+        />
+    </data>
+</odoo>

@@ -30,6 +30,7 @@
         'views/school_session_view.xml',
         'views/school_teacher_view.xml',
         'views/school_student_view.xml',
+        'views/school_transfer_request_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
