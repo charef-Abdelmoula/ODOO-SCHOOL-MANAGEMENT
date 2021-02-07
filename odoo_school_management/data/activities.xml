@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mail_act_transfer_decision" model="mail.activity.type">
+            <!--The name of the activity-->
+            <field name="name">Transfer Request Decision</field>
+            <!--The icon of the activity-->
+            <field name="icon">fa-sun-o</field>
+            <!--in ref you mention the name of the module and then the
+            name of the object :school.transfer.request as model_school_transfer_request-->
+            <field name="res_model_id" ref="odoo_school_management.model_school_transfer_request"/>
+        </record>
+    </data>
+</odoo>
